@@ -23,7 +23,12 @@
             padding: 0;
             box-sizing: border-box;
         }
-        html, body {
+        html {
+        background-color: #0f0f23; /* fallback color to prevent white flash */
+        min-height: 100%;
+        overflow-x: hidden;
+            }
+         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
