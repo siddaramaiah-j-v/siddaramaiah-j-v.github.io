@@ -653,7 +653,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         // Network Connection Animation
- // Network Connection Animation
+       // Network Connection Animation
 class NetworkAnimation {
     constructor() {
         this.canvas = document.getElementById('network-canvas');
@@ -882,24 +882,22 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Navbar background change on scroll (ONLY navbar, not body background)
+// Navbar background change on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(44, 62, 80, 0.98)';
-        } else {
-            navbar.style.background = 'rgba(44, 62, 80, 0.95)';
-        }
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(44, 62, 80, 0.98)';
+    } else {
+        navbar.style.background = 'rgba(44, 62, 80, 0.95)';
     }
 });
 
-// Add loading animation (removed body background changes)
+// Add loading animation
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
 
-// Parallax effect for hero section (no background color changes)
+// Parallax effect for hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroContent = document.querySelector('.hero-content');
@@ -923,13 +921,13 @@ function typeWriter(element, text, speed = 100) {
 }
 
 // Initialize typing effect (uncomment if you want to use it)
-document.addEventListener('DOMContentLoaded', () => {
-    const heroTitle = document.querySelector('.hero-content h1');
-    if (heroTitle) {
-        const originalText = heroTitle.textContent;
-        typeWriter(heroTitle, originalText, 150);
-    }
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     const heroTitle = document.querySelector('.hero-content h1');
+//     if (heroTitle) {
+//         const originalText = heroTitle.textContent;
+//         typeWriter(heroTitle, originalText, 150);
+//     }
+// });
 
 // Contact form animation (if you add a contact form later)
 function animateContactItems() {
@@ -1007,9 +1005,9 @@ function throttle(func, wait) {
     };
 }
 
-// Apply throttling to scroll events (no body background changes)
+// Apply throttling to scroll events
 const throttledScrollHandler = throttle(() => {
-    // Scroll-dependent animations go here (excluding body background changes)
+    // Scroll-dependent animations go here
 }, 16); // ~60fps
 
 window.addEventListener('scroll', throttledScrollHandler);
