@@ -823,10 +823,10 @@ class NetworkAnimation {
             this.createNodes();
         });
         
-        window.addEventListener('mousemove', (e) => {
-            this.mouse.x = e.clientX;
-            this.mouse.y = e.clientY + window.scrollY;
-        });
+        // window.addEventListener('mousemove', (e) => {
+        //     this.mouse.x = e.clientX;
+        //     this.mouse.y = e.clientY + window.scrollY;
+        // });
         
         window.addEventListener('scroll', () => {
             this.resizeCanvas();
@@ -921,13 +921,13 @@ function typeWriter(element, text, speed = 100) {
 }
 
 // Initialize typing effect (uncomment if you want to use it)
-// document.addEventListener('DOMContentLoaded', () => {
-//     const heroTitle = document.querySelector('.hero-content h1');
-//     if (heroTitle) {
-//         const originalText = heroTitle.textContent;
-//         typeWriter(heroTitle, originalText, 150);
-//     }
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    const heroTitle = document.querySelector('.hero-content h1');
+    if (heroTitle) {
+        const originalText = heroTitle.textContent;
+        typeWriter(heroTitle, originalText, 150);
+    }
+});
 
 // Contact form animation (if you add a contact form later)
 function animateContactItems() {
