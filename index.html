@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddaramaiah J V - Python Developer Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-light: #ecf0f1;
+            --text-dark: #2c3e50;
+            --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #1a1a2e 100%);
+            background-size: 400% 400%;
+            animation: subtleGradientShift 20s ease infinite;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes subtleGradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Network Connection Background */
+        #network-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(44, 62, 80, 0.95) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--secondary-color) !important;
+        }
+
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #3498db, #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.8;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Section */
+        .skill-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(52, 152, 219, 0.1);
+            transform: translateX(5px);
+        }
+
+        .skill-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--secondary-color);
+            width: 30px;
+        }
+
+        /* Projects Section */
+        .project-card {
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        .tech-stack {
+            background: var(--gradient-bg);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--secondary-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .experience-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .experience-company {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .experience-duration {
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            margin-right: 1rem;
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin: 0 1rem;
+            padding: 1rem;
+            background: var(--gradient-bg);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 28px;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Buttons */
+        .btn-custom {
+            background: var(--gradient-bg);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-heading {
+                font-size: 2rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .social-link {
+                width: 50px;
+                height: 50px;
+                line-height: 22px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Network Connection Background -->
+    <canvas id="network-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <h1>Siddaramaiah J V</h1>
+                <p class="subtitle">Python Developer</p>
+                <p class="description">
+                    Passionate Python developer with expertise in Django framework, API development, and database management. 
+                    Dedicated to creating efficient, scalable solutions and continuously learning new technologies.
+                </p>
+                <a href="siddaramaiah J V.pdf" class="btn-custom">My Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="section-heading">About Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body text-center">
+                                <p>I am <span>siddaramaiah J V</span>, a <b>Recent Computer Science Engineering Graduate from VTU University</b>, with a passion for web development and software engineering.
+                    I enjoy building efficient and user-friendly applications using <b>Python and Django</b>.
+                    I have worked on projects like a <b>Student Management System</b> and a <b>distraction-free learning
+                        platform Called Havelse</b> to enhance the learning experience. I am always eager to learn new
+                    technologies, solve problems, and improve my coding skills.
+                    I strive to create innovative solutions and look forward to opportunities that help me grow as a
+                    developer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="section-heading">Technical Skills</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Programming Languages</h4>
+                            <div class="skill-item">
+                                <i class="fab fa-python skill-icon"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-database skill-icon"></i>
+                                <span>SQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Backend & Frameworks</h4>
+                            <div class="skill-item">
+                                <i class="fab fa-python skill-icon"></i>
+                                <span>Django Framework</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-flask skill-icon"></i>
+                                <span>Flask</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Frontend Technologies</h4>
+                            <div class="skill-item">
+                                <i class="fab fa-html5 skill-icon"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt skill-icon"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-bootstrap skill-icon"></i>
+                                <span>Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="400">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Database Management</h4>
+                            <div class="skill-item">
+                                <i class="fas fa-database skill-icon"></i>
+                                <span>MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="500">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Version Control & API</h4>
+                            <div class="skill-item">
+                                <i class="fab fa-git-alt skill-icon"></i>
+                                <span>Git</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-github skill-icon"></i>
+                                <span>GitHub</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-code skill-icon"></i>
+                                <span>RESTful APIs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="600">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Testing & Tools</h4>
+                            <div class="skill-item">
+                                <i class="fas fa-bug skill-icon"></i>
+                                <span>Postman Testing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="section-heading">Featured Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card project-card">
+                        <div class="card-body">
+                            <div class="project-title">
+                                <h4>Distraction Free Learning Platform</h4>
+                                <a href="https://github.com/siddaramaiah-j-v/HAVELSE" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <ul>
+                                <li>My project is a <b>distraction-free learning platform</b> where users can access
+                                    <b>YouTube tutorials, coding resources, and a built-in code editor.</b></li>
+                                <li>It integrates <b>Gemini-assistant</b> for doubt-solving and <b>Hacker Rank</b>
+                                    problems for practice.</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <strong>Tech Stack:</strong> Django, Python, MySQL, JavaScript, HTML, CSS
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card project-card">
+                        <div class="card-body">
+                            <div class="project-title">
+                                <h4>Student Management System</h4>
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <ul>
+                                <li>A comprehensive <b>Student Management System</b> that enables administrators to <b>manage student data, track enrollment records, and handle student information efficiently.</b></li>
+                                <li>It features <b>student registration, data management</b>, and a <b>user-friendly interface</b> for streamlined operations.</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <strong>Tech Stack:</strong> Flask, Python, SQLite, HTML, CSS, Bootstrap
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="contact-info" data-aos="zoom-in">
+                        <h3 class="mb-4">Stay Connected</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>siddugowda1412@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>(+91) 8147474224</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bengaluru, Karnataka, India</span>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="mailto:siddugowda1412@gmail.com" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/siddaramaiah-j-v-65087b205" class="social-link" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/siddaramaiah-j-v" class="social-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-muted">
+                                Open to new opportunities and collaborations. 
+                                Let's build something amazing together!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Siddaramaiah J V. All rights reserved.</p>
+            <p>Crafted with <i class="fas fa-heart" style="color: #e74c3c;"></i> and passion for technology</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Network Connection Animation
+       // Network Connection Animation
+class NetworkAnimation {
+    constructor() {
+        this.canvas = document.getElementById('network-canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.nodes = [];
+        this.connections = [];
+        this.mouse = { x: 0, y: 0 };
+        this.nodeCount = 60;
+        this.connectionDistance = 120;
+        this.mouseRadius = 150;
+        
+        this.init();
+        this.animate();
+        this.setupEventListeners();
+    }
+    
+    init() {
+        this.resizeCanvas();
+        this.createNodes();
+    }
+    
+    resizeCanvas() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = document.body.scrollHeight;
+    }
+    
+    createNodes() {
+        this.nodes = [];
+        for (let i = 0; i < this.nodeCount; i++) {
+            this.nodes.push({
+                x: Math.random() * this.canvas.width,
+                y: Math.random() * this.canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                radius: Math.random() * 3 + 1,
+                color: this.getRandomColor(),
+                pulsePhase: Math.random() * Math.PI * 2,
+                originalRadius: Math.random() * 3 + 1
+            });
+        }
+    }
+    
+    getRandomColor() {
+        const colors = [
+            'rgba(52, 152, 219, 0.8)',
+            'rgba(155, 89, 182, 0.8)',
+            'rgba(46, 204, 113, 0.8)',
+            'rgba(241, 196, 15, 0.8)',
+            'rgba(231, 76, 60, 0.8)',
+            'rgba(230, 126, 34, 0.8)'
+        ];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+    
+    updateNodes() {
+        this.nodes.forEach(node => {
+            // Update position
+            node.x += node.vx;
+            node.y += node.vy;
+            
+            // Bounce off edges
+            if (node.x < 0 || node.x > this.canvas.width) node.vx *= -1;
+            if (node.y < 0 || node.y > this.canvas.height) node.vy *= -1;
+            
+            // Keep within bounds
+            node.x = Math.max(0, Math.min(this.canvas.width, node.x));
+            node.y = Math.max(0, Math.min(this.canvas.height, node.y));
+            
+            // Pulsing effect
+            node.pulsePhase += 0.02;
+            node.radius = node.originalRadius + Math.sin(node.pulsePhase) * 0.5;
+            
+            // Mouse interaction
+            const mouseDistance = Math.sqrt(
+                Math.pow(node.x - this.mouse.x, 2) + 
+                Math.pow(node.y - this.mouse.y, 2)
+            );
+            
+            if (mouseDistance < this.mouseRadius) {
+                const force = (this.mouseRadius - mouseDistance) / this.mouseRadius;
+                const angle = Math.atan2(node.y - this.mouse.y, node.x - this.mouse.x);
+                node.vx += Math.cos(angle) * force * 0.2;
+                node.vy += Math.sin(angle) * force * 0.2;
+                node.radius = node.originalRadius + force * 2;
+            }
+            
+            // Damping
+            node.vx *= 0.99;
+            node.vy *= 0.99;
+        });
+    }
+    
+    drawNodes() {
+        this.nodes.forEach(node => {
+            this.ctx.beginPath();
+            this.ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+            this.ctx.fillStyle = node.color;
+            this.ctx.fill();
+            
+            // Glow effect
+            this.ctx.shadowColor = node.color;
+            this.ctx.shadowBlur = 10;
+            this.ctx.fill();
+            this.ctx.shadowBlur = 0;
+        });
+    }
+    
+    drawConnections() {
+        this.connections = [];
+        
+        for (let i = 0; i < this.nodes.length; i++) {
+            for (let j = i + 1; j < this.nodes.length; j++) {
+                const distance = Math.sqrt(
+                    Math.pow(this.nodes[i].x - this.nodes[j].x, 2) + 
+                    Math.pow(this.nodes[i].y - this.nodes[j].y, 2)
+                );
+                
+                if (distance < this.connectionDistance) {
+                    const opacity = 1 - (distance / this.connectionDistance);
+                    
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(this.nodes[i].x, this.nodes[i].y);
+                    this.ctx.lineTo(this.nodes[j].x, this.nodes[j].y);
+                    this.ctx.strokeStyle = `rgba(52, 152, 219, ${opacity * 0.3})`;
+                    this.ctx.lineWidth = opacity * 2;
+                    this.ctx.stroke();
+                    
+                    // Data flow animation
+                    this.animateDataFlow(this.nodes[i], this.nodes[j], opacity);
+                }
+            }
+        }
+    }
+    
+    animateDataFlow(node1, node2, opacity) {
+        const time = Date.now() * 0.001;
+        const progress = (Math.sin(time * 2) + 1) / 2;
+        
+        const x = node1.x + (node2.x - node1.x) * progress;
+        const y = node1.y + (node2.y - node1.y) * progress;
+        
+        this.ctx.beginPath();
+        this.ctx.arc(x, y, 2, 0, Math.PI * 2);
+        this.ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.8})`;
+        this.ctx.fill();
+        
+        // Glow effect for data flow
+        this.ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+        this.ctx.shadowBlur = 5;
+        this.ctx.fill();
+        this.ctx.shadowBlur = 0;
+    }
+    
+    animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        this.updateNodes();
+        this.drawConnections();
+        this.drawNodes();
+        
+        requestAnimationFrame(() => this.animate());
+    }
+    
+    setupEventListeners() {
+        window.addEventListener('resize', () => {
+            this.resizeCanvas();
+            this.createNodes();
+        });
+        
+        window.addEventListener('mousemove', (e) => {
+            this.mouse.x = e.clientX;
+            this.mouse.y = e.clientY + window.scrollY;
+        });
+        
+        window.addEventListener('scroll', () => {
+            this.resizeCanvas();
+        });
+    }
+}
+
+// Initialize AOS (Animate On Scroll)
+AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100
+});
+
+// Initialize Network Animation
+document.addEventListener('DOMContentLoaded', () => {
+    new NetworkAnimation();
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Update active navigation link on scroll
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Navbar background change on scroll
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(44, 62, 80, 0.98)';
+    } else {
+        navbar.style.background = 'rgba(44, 62, 80, 0.95)';
+    }
+});
+
+// Add loading animation
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+});
+
+// Dynamic typing effect for hero title (optional enhancement)
+function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    element.innerHTML = '';
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
+// Initialize typing effect (uncomment if you want to use it)
+// document.addEventListener('DOMContentLoaded', () => {
+//     const heroTitle = document.querySelector('.hero-content h1');
+//     if (heroTitle) {
+//         const originalText = heroTitle.textContent;
+//         typeWriter(heroTitle, originalText, 150);
+//     }
+// });
+
+// Contact form animation (if you add a contact form later)
+function animateContactItems() {
+    const contactItems = document.querySelectorAll('.contact-item');
+    contactItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+        }, index * 200);
+    });
+}
+
+// Skill items hover effect enhancement
+document.querySelectorAll('.skill-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateX(10px) scale(1.05)';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateX(0) scale(1)';
+    });
+});
+
+// Project cards interaction
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-15px) rotateY(5deg)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) rotateY(0deg)';
+    });
+});
+
+// Social links hover effect
+document.querySelectorAll('.social-link').forEach(link => {
+    link.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.2) rotateZ(10deg)';
+    });
+    
+    link.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1) rotateZ(0deg)';
+    });
+});
+
+// Add intersection observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, observerOptions);
+
+// Observe all cards and sections
+document.querySelectorAll('.card, .experience-item').forEach(el => {
+    observer.observe(el);
+});
+
+// Performance optimization: Throttle scroll events
+function throttle(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Apply throttling to scroll events
+const throttledScrollHandler = throttle(() => {
+    // Scroll-dependent animations go here
+}, 16); // ~60fps
+
+window.addEventListener('scroll', throttledScrollHandler);
+
+</script>
+</body>
+</html>
