@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siddaramaiah J V - Python Developer Portfolio</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
@@ -23,8 +25,8 @@
             padding: 0;
             box-sizing: border-box;
         }
-         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        body {
             line-height: 1.6;
             color: var(--text-dark);
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #1a1a2e 100%);
@@ -32,7 +34,6 @@
             animation: subtleGradientShift 20s ease infinite;
             min-height: 100vh;
             position: relative;
-            overflow-x: hidden;
         }
 
         @keyframes subtleGradientShift {
@@ -55,8 +56,9 @@
 
         /* Navigation */
         .navbar {
-            background: rgba(44, 62, 80, 0.95) !important;
+            background: rgba(255, 255, 255, 0.01) !important;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
@@ -70,31 +72,19 @@
         .nav-link {
             color: var(--text-light) !important;
             font-weight: 500;
+            padding: 5px 30px;
             margin: 0 10px;
-            transition: all 0.3s ease;
+            border: 1px solid transparent;
             position: relative;
         }
 
         .nav-link:hover, .nav-link.active {
-            color: var(--secondary-color) !important;
-            transform: translateY(-2px);
+            background-color: transparent;
+            backdrop-filter: blur(20px);
+            border-color:rgba(255, 255, 255, 0.416);
+            border-radius: 25px;
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 50%;
-            background: var(--secondary-color);
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
-            left: 0;
-        }
 
         /* Hero Section */
         .hero-section {
@@ -143,6 +133,7 @@
         section {
             padding: 80px 0;
             position: relative;
+            
         }
 
         .section-heading {
@@ -169,18 +160,23 @@
 
         /* Cards */
         .card {
-            background: rgba(255, 255, 255, 0.95);
-            border: none;
+            
+            background: rgba(255, 255, 255, 0.025);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
             border-radius: 20px;
             box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
             overflow: hidden;
+            height: 100%;
+            margin-bottom: 2rem;
         }
 
         .card:hover {
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .card-body {
@@ -188,13 +184,14 @@
         }
 
         .card-title {
-            color: var(--primary-color);
+            color: rgba(245, 245, 245, 0.538);
             font-weight: 600;
             margin-bottom: 1rem;
         }
 
         /* Skills Section */
         .skill-item {
+            
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
@@ -204,7 +201,7 @@
         }
 
         .skill-item:hover {
-            background: rgba(52, 152, 219, 0.1);
+            background: rgba(13, 95, 150, 0.826);
             transform: translateX(5px);
         }
 
@@ -217,11 +214,15 @@
 
         /* Projects Section */
         .project-card {
+
+            background: rgba(255, 255, 255, 0.025);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             height: 100%;
             position: relative;
             overflow: hidden;
         }
-
+        
         .project-title {
             display: flex;
             align-items: center;
@@ -229,19 +230,11 @@
             margin-bottom: 1rem;
         }
 
-        .project-link {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: var(--accent-color);
-            transform: scale(1.2);
-        }
-
         .tech-stack {
-            background: var(--gradient-bg);
+
+            background: rgba(52, 152, 219, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -250,36 +243,14 @@
             text-align: center;
         }
 
-        /* Experience Section */
-        .experience-item {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--secondary-color);
-            box-shadow: var(--card-shadow);
-        }
-
-        .experience-title {
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 1.3rem;
-        }
-
-        .experience-company {
-            color: var(--secondary-color);
-            font-weight: 500;
-        }
-
-        .experience-duration {
-            color: #666;
-            font-style: italic;
-        }
 
         /* Contact Section */
         .contact-info {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.025);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 3rem;
+            color: white;
             border-radius: 20px;
             text-align: center;
             box-shadow: var(--card-shadow);
@@ -327,9 +298,11 @@
 
         /* Buttons */
         .btn-custom {
-            background: var(--gradient-bg);
+
+            background: rgba(255, 255, 255, 0.025);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
-            border: none;
             padding: 12px 30px;
             border-radius: 30px;
             font-weight: 600;
@@ -344,6 +317,7 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             color: white;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* Responsive Design */
@@ -370,12 +344,19 @@
 
         /* Footer */
         .footer {
-            background: rgba(44, 62, 80, 0.9);
+            background: rgba(255, 255, 255, 0.025);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-light);
             text-align: center;
             padding: 2rem 0;
             margin-top: 2rem;
         }
+
+        .text-mute {
+            color: rgba(255, 255, 255, 0.666);
+        }
+
     </style>
 </head>
 <body>
@@ -557,8 +538,8 @@
                         <div class="card-body">
                             <div class="project-title">
                                 <h4>Distraction Free Learning Platform</h4>
-                                <a href="https://github.com/siddaramaiah-j-v/HAVELSE" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
+                                <a href="https://github.com/siddaramaiah-j-v/HAVELSE" class="btn btn-sm btn-outline-light">
+                                    <i class="fab fa-github"></i>
                                 </a>
                             </div>
                             <ul>
@@ -578,8 +559,8 @@
                         <div class="card-body">
                             <div class="project-title">
                                 <h4>Student Management System</h4>
-                                <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
+                                <a href="#" class="btn btn-sm btn-outline-light">
+                                    <i class="fab fa-github"></i>
                                 </a>
                             </div>
                             <ul>
@@ -628,7 +609,7 @@
                             </a>
                         </div>
                         <div class="mt-4">
-                            <p class="text-muted">
+                            <p class="text-mute">
                                 Open to new opportunities and collaborations. 
                                 Let's build something amazing together!
                             </p>
@@ -920,24 +901,14 @@ function typeWriter(element, text, speed = 100) {
 }
 
 // Initialize typing effect (uncomment if you want to use it)
-// document.addEventListener('DOMContentLoaded', () => {
-//     const heroTitle = document.querySelector('.hero-content h1');
-//     if (heroTitle) {
-//         const originalText = heroTitle.textContent;
-//         typeWriter(heroTitle, originalText, 150);
-//     }
-// });
+ document.addEventListener('DOMContentLoaded', () => {
+     const heroTitle = document.querySelector('.hero-content h1');
+     if (heroTitle) {
+        const originalText = heroTitle.textContent;
+         typeWriter(heroTitle, originalText, 150);
+     }
+});
 
-// Contact form animation (if you add a contact form later)
-function animateContactItems() {
-    const contactItems = document.querySelectorAll('.contact-item');
-    contactItems.forEach((item, index) => {
-        setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateX(0)';
-        }, index * 200);
-    });
-}
 
 // Skill items hover effect enhancement
 document.querySelectorAll('.skill-item').forEach(item => {
