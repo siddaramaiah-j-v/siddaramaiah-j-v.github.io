@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siddaramaiah J V - Python Developer Portfolio</title>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
-        :root {
+         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
             --accent-color: #e74c3c;
@@ -27,13 +25,23 @@
         }
 
         body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #165950 0%, #1c7760 25%, hsl(167, 48%, 16%) 50%, #153a32 75%, #117052 100%);
+            background: -webkit-linear-gradient(135deg,#165950 0%, #1c7760 25%, #163e35 50%, #153a32 75%, #117052 100%);
             background-size: 400% 400%;
             animation: subtleGradientShift 20s ease infinite;
+            -webkit-animation: subtleGradientShift 20s ease infinite;
             min-height: 100vh;
             position: relative;
+            overflow-x: hidden;
+        }
+
+        @-webkit-keyframes subtleGradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         @keyframes subtleGradientShift {
@@ -50,17 +58,28 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 0;
             opacity: 0.8;
         }
 
         /* Navigation */
         .navbar {
-            background: rgba(255, 255, 255, 0.01) !important;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            margin: 0 auto;
+            width: 95%;
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 0 0;
+    
         }
 
         .navbar-brand {
@@ -70,20 +89,55 @@
         }
 
         .nav-link {
-            color: var(--text-light) !important;
-            font-weight: 500;
-            padding: 5px 30px;
-            margin: 0 10px;
-            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            padding: 1rem 1rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            font-weight: 580;
+            text-decoration: none;
+            transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            text-align: center;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+            border-radius: 20px;
         }
 
         .nav-link:hover, .nav-link.active {
-            background-color: transparent;
-            backdrop-filter: blur(20px);
-            border-color:rgba(255, 255, 255, 0.416);
-            border-radius: 25px;
+            color: #1f4037 !important;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
+
+
+        .nav-link:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+         }
+
 
 
         /* Hero Section */
@@ -109,6 +163,13 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: textShimmer 3s ease-in-out infinite;
+            -webkit-animation: textShimmer 3s ease-in-out infinite;
+        }
+        
+
+        @-webkit-keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         @keyframes textShimmer {
@@ -117,13 +178,13 @@
         }
 
         .hero-content .subtitle {
-            font-size: 1.5rem;
+            font-size: 2rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            opacity: 1;
         }
 
         .hero-content .description {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             max-width: 600px;
             margin: 0 auto 2rem;
             opacity: 0.8;
@@ -133,7 +194,6 @@
         section {
             padding: 80px 0;
             position: relative;
-            
         }
 
         .section-heading {
@@ -141,7 +201,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 3rem;
-            color: white;
+            color: var(--text-light);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             position: relative;
         }
@@ -155,53 +215,62 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
             border-radius: 2px;
         }
 
         /* Cards */
         .card {
-            
-            background: rgba(255, 255, 255, 0.025);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
             overflow: hidden;
-            height: 100%;
-            margin-bottom: 2rem;
         }
 
         .card:hover {
-            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            -webkit-transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .card-body {
+            color: #031d31;
             padding: 2rem;
         }
 
         .card-title {
-            color: rgba(245, 245, 245, 0.538);
+            color: #072339 !important;
             font-weight: 600;
             margin-bottom: 1rem;
         }
 
         /* Skills Section */
         .skill-item {
-            
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            padding: 1rem 1rem;
+            color: var(--text-light);
+            width:250px;
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
             padding: 0.5rem;
-            border-radius: 10px;
+            border-radius: 20px;
             transition: all 0.3s ease;
         }
 
         .skill-item:hover {
-            background: rgba(13, 95, 150, 0.826);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             transform: translateX(5px);
         }
 
@@ -214,28 +283,28 @@
 
         /* Projects Section */
         .project-card {
-
-            background: rgba(255, 255, 255, 0.025);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             height: 100%;
             position: relative;
             overflow: hidden;
+            padding: 2rem;
         }
-        
+
         .project-title {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
 
-        .tech-stack {
 
-            background: rgba(52, 152, 219, 0.15);
+        .tech-stack {
+            background: #1c7760;
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            color:var(--text-light);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -243,21 +312,22 @@
             text-align: center;
         }
 
-
-        /* Contact Section */
         .contact-info {
-            background: rgba(255, 255, 255, 0.025);
+            background: rgba(255, 255, 255, 0.05) !important;
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             padding: 3rem;
-            color: white;
             border-radius: 20px;
             text-align: center;
+            color:  #072339 !important;
             box-shadow: var(--card-shadow);
         }
 
         .contact-item {
             display: flex;
+            color: var(--text-light);
             align-items: center;
             justify-content: center;
             margin-bottom: 1rem;
@@ -266,7 +336,7 @@
 
         .contact-item i {
             margin-right: 1rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             width: 20px;
         }
 
@@ -290,6 +360,46 @@
             text-decoration: none;
         }
 
+
+        .project-link {
+            display: inline-block;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            padding: 0.75rem 0.75rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            text-align: center;
+
+        }
+
+        .project-link:hover {
+            background: rgba(16, 15, 15, 0.656);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(16, 15, 15, 0.656);
+            color: var(--text-light);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        .tech-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem; 
+        }
+
         .social-link:hover {
             transform: translateY(-5px) scale(1.1);
             color: white;
@@ -297,27 +407,84 @@
         }
 
         /* Buttons */
-        .btn-custom {
-
-            background: rgba(255, 255, 255, 0.025);
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;  
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-custom:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        .btn-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-glass:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn-glass:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             color: white;
-            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8));
+            transform-origin: 0 50%;
+            transform: scaleX(0);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+
+        .skill-item, .project-card, .social-link, .btn-custom {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-perspective: 1000px;
+            perspective: 1000px;
+        }
+
+        /* Enhanced 3D transforms for WebKit */
+        .card:hover {
+            -webkit-transform: translateY(-10px) translateZ(0);
+            transform: translateY(-10px) translateZ(0);
+        }
+
+        .project-card:hover {
+            -webkit-transform: translateY(-15px) rotateY(5deg) translateZ(0);
+            transform: translateY(-15px) rotateY(5deg) translateZ(0);
+        }
+
+        .social-link:hover {
+            -webkit-transform: translateY(-8px) scale(1.2) rotateZ(10deg) translateZ(0);
+            transform: translateY(-8px) scale(1.2) rotateZ(10deg) translateZ(0);
         }
 
         /* Responsive Design */
@@ -341,26 +508,97 @@
                 font-size: 1.2rem;
             }
         }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(44, 62, 80, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 4px;
+            -webkit-transition: background 0.3s ease;
+            transition: background 0.3s ease;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        .animate-in {
+            -webkit-animation: slideInUp 0.6s ease forwards;
+            animation: slideInUp 0.6s ease forwards;
+        }
+        
+        @-webkit-keyframes slideInUp {
+            from {
+                opacity: 0;
+                -webkit-transform: translateY(30px);
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loaded .hero-content {
+            -webkit-animation: fadeInUp 1s ease forwards;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @-webkit-keyframes fadeInUp {
+            from {
+                opacity: 0;
+                -webkit-transform: translateY(50px);
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+         @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         /* Footer */
         .footer {
-            background: rgba(255, 255, 255, 0.025);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(6, 62, 55, 0.9);
             color: var(--text-light);
             text-align: center;
             padding: 2rem 0;
             margin-top: 2rem;
         }
 
-        .text-mute {
-            color: rgba(255, 255, 255, 0.666);
-        }
-
     </style>
 </head>
 <body>
-    <!-- Network Connection Background -->
     <canvas id="network-canvas"></canvas>
 
     <!-- Navigation -->
@@ -372,19 +610,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
+                        <a class="nav-link p-2 m-2 active" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link p-2 m-2" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
+                        <a class="nav-link p-2 m-2" href="#skills">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
+                        <a class="nav-link p-2 m-2" href="#projects">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link p-2 m-2" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -398,10 +636,10 @@
                 <h1>Siddaramaiah J V</h1>
                 <p class="subtitle">Python Developer</p>
                 <p class="description">
-                    Passionate Python developer with expertise in Django framework, API development, and database management. 
+                    Passionate Python developer with expertise in Django framework, API development and database management. 
                     Dedicated to creating efficient, scalable solutions and continuously learning new technologies.
                 </p>
-                <a href="siddaramaiah_J_V.pdf" class="btn-custom">My Resume</a>
+                <a href="siddaramaiah_J_V.pdf" class="btn-glass">My Resume</a>
             </div>
         </div>
     </section>
@@ -537,19 +775,24 @@
                     <div class="card project-card">
                         <div class="card-body">
                             <div class="project-title">
-                                <h4>Distraction Free Learning Platform</h4>
-                                <a href="https://github.com/siddaramaiah-j-v/HAVELSE" class="btn btn-sm btn-outline-light">
-                                    <i class="fab fa-github"></i>
-                                </a>
+                                <h4>HAVELSE - Distraction-free learning platform</h4>
                             </div>
                             <ul>
-                                <li>My project is a <b>distraction-free learning platform</b> where users can access
-                                    <b>YouTube tutorials, coding resources, and a built-in code editor.</b></li>
-                                <li>It integrates <b>Gemini-assistant</b> for doubt-solving and <b>Hacker Rank</b>
-                                    problems for practice.</li>
+                                <li><b>AI Integration:</b> Implemented <b>Gemini API</b> in Havelse for AI-based doubt resolution, enhancing learning efficiency.</li>
+                                <li><b>Real-Time Code Execution:</b> Integrated <b>Judge0 API</b>to support multi-language code execution inside an embedded IDE.</li>
+                                <li><b>YouTube Tutorial:</b> Integrated the <b>YouTube API</b> to deliver distraction-free, topic-specific video tutorials directly within the platform, allowing learners to watch and code side-by-side without leaving the interface.</li>
+                                <li><b>Secure Authentication:</b> Developed robust login systems using both password and <b>OTP-based</b> authentication with session handling.</li>
                             </ul>
                             <div class="tech-stack">
                                 <strong>Tech Stack:</strong> Django, Python, MySQL, JavaScript, HTML, CSS
+                            </div>
+                            <div class="tech-button">
+                                <a href="https://github.com/siddaramaiah-j-v/HAVELSE" class="project-link">
+                                    Github<i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://havelse.onrender.com" class="project-link">
+                                    Demo
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -559,13 +802,15 @@
                         <div class="card-body">
                             <div class="project-title">
                                 <h4>Student Management System</h4>
-                                <a href="#" class="btn btn-sm btn-outline-light">
+                                <a href="#" class="project-link">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                             <ul>
-                                <li>A comprehensive <b>Student Management System</b> that enables administrators to <b>manage student data, track enrollment records, and handle student information efficiently.</b></li>
-                                <li>It features <b>student registration, data management</b>, and a <b>user-friendly interface</b> for streamlined operations.</li>
+                                <l><b>Role-Based Access Control:</b> Implemented distinct user roles (Admin, Teacher, Student) with permission-based access to features and data.</l>
+                                <li><b>CRUD Operations:</b> Enabled secure creation, reading, updating, and deletion of student records using Django’s ORM.</li>
+                                <li><b>Responsive Dashboard:</b> Designed a clean, responsive UI using Bootstrap for managing students, courses, and performance data.</li><b>
+                                <li><b>Secure Authentication:</b> Built login and session management with validation to ensure only authorized users access the system.</li>
                             </ul>
                             <div class="tech-stack">
                                 <strong>Tech Stack:</strong> Flask, Python, SQLite, HTML, CSS, Bootstrap
@@ -609,7 +854,7 @@
                             </a>
                         </div>
                         <div class="mt-4">
-                            <p class="text-mute">
+                            <p class="text-muted">
                                 Open to new opportunities and collaborations. 
                                 Let's build something amazing together!
                             </p>
@@ -862,20 +1107,32 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Navbar background change on scroll
+
 window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(44, 62, 80, 0.98)';
-    } else {
-        navbar.style.background = 'rgba(44, 62, 80, 0.95)';
-    }
-});
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.15)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.2)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.1)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+window.addEventListener('scroll', () => {
+            const scroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = document.querySelector('.scroll-progress');
+            const scrolled = (scroll / height) * 100;
+            progress.style.transform = `scaleX(${scrolled / 100})`;
+        });
+
+
 
 // Add loading animation
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
+// window.addEventListener('load', () => {
+//     document.body.classList.add('loaded');
+// });
 
 // Parallax effect for hero section
 window.addEventListener('scroll', () => {
@@ -901,14 +1158,24 @@ function typeWriter(element, text, speed = 100) {
 }
 
 // Initialize typing effect (uncomment if you want to use it)
- document.addEventListener('DOMContentLoaded', () => {
-     const heroTitle = document.querySelector('.hero-content h1');
-     if (heroTitle) {
+document.addEventListener('DOMContentLoaded', () => {
+    const heroTitle = document.querySelector('.hero-content h1');
+    if (heroTitle) {
         const originalText = heroTitle.textContent;
-         typeWriter(heroTitle, originalText, 150);
-     }
+        typeWriter(heroTitle, originalText, 150);
+    }
 });
 
+// Contact form animation (if you add a contact form later)
+function animateContactItems() {
+    const contactItems = document.querySelectorAll('.contact-item');
+    contactItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+        }, index * 200);
+    });
+}
 
 // Skill items hover effect enhancement
 document.querySelectorAll('.skill-item').forEach(item => {
@@ -920,6 +1187,44 @@ document.querySelectorAll('.skill-item').forEach(item => {
         this.style.transform = 'translateX(0) scale(1)';
     });
 });
+
+
+
+
+ document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.02)';
+                card.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+            });
+        });
+
+
+
+document.querySelectorAll('.card, .project-card').forEach(element => {
+    element.addEventListener('mousemove', (e) => {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+
+        element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+    });
+
+    element.addEventListener('mouseleave', () => {
+        element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+    });
+});
+        
 
 // Project cards interaction
 document.querySelectorAll('.project-card').forEach(card => {
@@ -962,25 +1267,35 @@ document.querySelectorAll('.card, .experience-item').forEach(el => {
     observer.observe(el);
 });
 
-// Performance optimization: Throttle scroll events
-function throttle(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
 
-// Apply throttling to scroll events
-const throttledScrollHandler = throttle(() => {
-    // Scroll-dependent animations go here
-}, 16); // ~60fps
+ document.querySelectorAll('.btn-glass').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const ripple = document.createElement('span');
+                const rect = btn.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
 
-window.addEventListener('scroll', throttledScrollHandler);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+
+                btn.style.position = 'relative';
+                btn.style.overflow = 'hidden';
+                btn.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
 
 </script>
 </body>
