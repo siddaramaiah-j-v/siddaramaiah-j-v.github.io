@@ -28,8 +28,9 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
-            background: linear-gradient(135deg, #165950 0%, #1c7760 25%, hsl(167, 48%, 16%) 50%, #153a32 75%, #117052 100%);
-            background: -webkit-linear-gradient(135deg,#165950 0%, #1c7760 25%, #163e35 50%, #153a32 75%, #117052 100%);
+            background: linear-gradient(135deg, #0d0d0d 0%, #121212 25%, #090909 50%, #101010 75%, #000000 100%);
+            background: -webkit-linear-gradient(135deg, #0d0d0d 0%, #121212 25%, #090909 50%, #101010 75%, #000000 100%);
+
             background-size: 400% 400%;
             animation: subtleGradientShift 20s ease infinite;
             -webkit-animation: subtleGradientShift 20s ease infinite;
@@ -239,12 +240,12 @@
         }
 
         .card-body {
-            color: #031d31;
+            color: #b7bec4;
             padding: 2rem;
         }
 
         .card-title {
-            color: #072339 !important;
+            color: #b7bec4 !important;
             font-weight: 600;
             margin-bottom: 1rem;
         }
@@ -296,6 +297,69 @@
             margin-bottom: 2rem;
         }
 
+        /* Project Screenshot Styles */
+        .project-screenshot {
+            width: 100%;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-screenshot:hover {
+            transform: scale(1.02);
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+        }
+
+        .project-screenshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .project-screenshot:hover img {
+            transform: scale(1.05);
+        }
+
+        .screenshot-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-screenshot:hover .screenshot-overlay {
+            opacity: 1;
+        }
+
+        .screenshot-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .screenshot-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
 
         .tech-stack {
             background: #1c7760;
@@ -321,7 +385,7 @@
             padding: 3rem;
             border-radius: 20px;
             text-align: center;
-            color:  #072339 !important;
+            color:   #b7bec4 !important;
             box-shadow: var(--card-shadow);
         }
 
@@ -507,6 +571,10 @@
                 line-height: 22px;
                 font-size: 1.2rem;
             }
+
+            .project-screenshot {
+                height: 200px;
+            }
         }
         
         ::-webkit-scrollbar {
@@ -589,11 +657,14 @@
 
         /* Footer */
         .footer {
-            background: rgba(6, 62, 55, 0.9);
+            background: rgba(53, 57, 56, 0.9);
             color: var(--text-light);
             text-align: center;
             padding: 2rem 0;
             margin-top: 2rem;
+        }
+        .text-muted{
+            color:   #b7bec4 !important;
         }
 
     </style>
@@ -639,7 +710,7 @@
                     Passionate Python developer with expertise in Django framework, API development and database management. 
                     Dedicated to creating efficient, scalable solutions and continuously learning new technologies.
                 </p>
-                <a href="siddaramaiah_J_V.pdf" class="btn-glass">My Resume</a>
+                <a href="siddaramaiah.pdf" class="btn-glass">My Resume</a>
             </div>
         </div>
     </section>
@@ -652,13 +723,8 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body text-center">
-                                <p>I am <span>siddaramaiah J V</span>, a <b>Recent Computer Science Engineering Graduate from VTU University</b>, with a passion for web development and software engineering.
-                    I enjoy building efficient and user-friendly applications using <b>Python and Django</b>.
-                    I have worked on projects like a <b>Student Management System</b> and a <b>distraction-free learning
-                        platform Called Havelse</b> to enhance the learning experience. I am always eager to learn new
-                    technologies, solve problems, and improve my coding skills.
-                    I strive to create innovative solutions and look forward to opportunities that help me grow as a
-                    developer.</p>
+                                <p>I’m Siddaramaiah J V, a passionate full-stack Python developer with a strong foundation in building scalable and intelligent web applications. I specialize in Django and RESTful APIs, and have hands-on experience integrating AI, OCR, and real-time data visualization into full-stack projects.With a Bachelor's degree in <b>Computer Science and Engineering</b> ,I’ve developed practical solutions including an AI-powered parking system and robust platforms like <b>HAVELSE</b> (an AI-integrated coding and learning platform) and <b>ExLens</b> (an OCR-powered expense manager).
+                                </p>
                         </div>
                     </div>
                 </div>
@@ -777,18 +843,24 @@
                             <div class="project-title">
                                 <h4>HAVELSE - Distraction-free learning platform</h4>
                             </div>
-                            <ul>
-                                <li><b>AI Integration:</b> Implemented <b>Gemini API</b> in Havelse for AI-based doubt resolution, enhancing learning efficiency.</li>
-                                <li><b>Real-Time Code Execution:</b> Integrated <b>Judge0 API</b>to support multi-language code execution inside an embedded IDE.</li>
-                                <li><b>YouTube Tutorial:</b> Integrated the <b>YouTube API</b> to deliver distraction-free, topic-specific video tutorials directly within the platform, allowing learners to watch and code side-by-side without leaving the interface.</li>
-                                <li><b>Secure Authentication:</b> Developed robust login systems using both password and <b>OTP-based</b> authentication with session handling.</li>
-                            </ul>
+                            
+                            <!-- Project Screenshot -->
+                            <div class="project-screenshot">
+                                <!-- Replace with actual screenshot when available -->
+                                <div class="screenshot-placeholder">
+                                    <img src="./Havelse.png" alt="">
+                                </div>
+                                <div class="screenshot-overlay">
+                                    <i class="fas fa-search-plus" style="font-size: 2rem; color: white;"></i>
+                                </div>
+                            </div>
+
                             <div class="tech-stack">
                                 <strong>Tech Stack:</strong> Django, Python, MySQL, JavaScript, HTML, CSS
                             </div>
                             <div class="tech-button">
                                 <a href="https://github.com/siddaramaiah-j-v/HAVELSE" class="project-link">
-                                    Github<i class="fab fa-github"></i>
+                                    Github <i class="fab fa-github"></i>
                                 </a>
                                 <a href="https://havelse.onrender.com" class="project-link">
                                     Demo
@@ -801,16 +873,27 @@
                     <div class="card project-card">
                         <div class="card-body">
                             <div class="project-title">
-                                <h4>Student Management System</h4>
+                                <h4> ExLens - Smart Expense Management System</h4>
                             </div>
-                            <ul>
-                                <li><b>Role-Based Access Control:</b> Implemented distinct user roles (Admin, Teacher, Student) with permission-based access to features and data.</li>
-                                <li><b>CRUD Operations:</b> Enabled secure creation, reading, updating, and deletion of student records using Django’s ORM.</li>
-                                <li><b>Responsive Dashboard:</b> Designed a clean, responsive UI using Bootstrap for managing students, courses, and performance data.</li>
-                                <li><b>Secure Authentication:</b> Built login and session management with validation to ensure only authorized users access the system.</li>
-                            </ul>
+                            
+                            <!-- Project Screenshot -->
+                            <div class="project-screenshot">
+                                <!-- Replace with actual screenshot when available -->
+                                <div class="screenshot-placeholder">
+                                    <img src="./Exlens.png" alt="">
+                                </div>
+                                <div class="screenshot-overlay">
+                                    <i class="fas fa-search-plus" style="font-size: 2rem; color: white;"></i>
+                                </div>
+                            </div>
+
                             <div class="tech-stack">
-                                <strong>Tech Stack:</strong> Django, Python, SQLite, HTML, CSS, Bootstrap
+                                <strong>Tech Stack:</strong> Django, Python, Sqlite, Js, Html, Css,Tesseract OCR,Pydantic,PyPDF2.
+                            </div>
+                            <div class="tech-button">
+                                <a href="https://github.com/siddaramaiah-j-v/ExLens" class="project-link">
+                                    Github <i class="fab fa-github"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -1264,6 +1347,23 @@ document.querySelectorAll('.card, .experience-item').forEach(el => {
     observer.observe(el);
 });
 
+// Performance optimization: Throttle scroll events
+// function throttle(func, wait) {
+//     let timeout;
+//     return function executedFunction(...args) {
+//         const later = () => {
+//             clearTimeout(timeout);
+//             func(...args);
+//         };
+//         clearTimeout(timeout);
+//         timeout = setTimeout(later, wait);
+//     };
+// }
+
+// Apply throttling to scroll events
+// const throttledScrollHandler = throttle(() => {
+//     // Scroll-dependent animations go here
+// }, 16); // ~60fps
 
  document.querySelectorAll('.btn-glass').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -1292,6 +1392,16 @@ document.querySelectorAll('.card, .experience-item').forEach(el => {
                 }, 600);
             });
         });
+
+// Screenshot click functionality for modal/zoom effect
+document.querySelectorAll('.project-screenshot').forEach(screenshot => {
+    screenshot.addEventListener('click', function() {
+        // Add modal functionality here if needed
+        console.log('Screenshot clicked - add modal or zoom functionality');
+    });
+});
+
+// window.addEventListener('scroll', throttledScrollHandler);
 
 </script>
 </body>
